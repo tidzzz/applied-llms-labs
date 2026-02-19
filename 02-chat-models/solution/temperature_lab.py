@@ -18,12 +18,12 @@ trials_per_temp = 3
 
 
 def temperature_experiment():
-    print("🌡️  Temperature Experiment\n")
+    print("️  Temperature Experiment\n")
     print(f'Prompt: "{prompt}"\n')
     print("=" * 80)
 
     for temp in temperatures:
-        print(f"\n🌡️ Temperature: {temp}")
+        print(f"\n️ Temperature: {temp}")
         print("-" * 80)
 
         model = ChatOpenAI(
@@ -43,24 +43,24 @@ def temperature_experiment():
 
         # Check for uniqueness
         unique_responses = set(responses)
-        print(f"\n📊 Unique responses: {len(unique_responses)}/{trials_per_temp}")
+        print(f"\n Unique responses: {len(unique_responses)}/{trials_per_temp}")
 
     print("\n" + "=" * 80)
-    print("📊 Analysis\n")
+    print(" Analysis\n")
     print("Temperature 0.0:")
-    print("  ✅ Consistent and deterministic")
-    print("  ✅ Best for: Code generation, factual Q&A, translations")
-    print("  ❌ Not ideal for: Creative writing, brainstorming\n")
+    print("   Consistent and deterministic")
+    print("   Best for: Code generation, factual Q&A, translations")
+    print("   Not ideal for: Creative writing, brainstorming\n")
 
     print("Temperature 0.5-1.0:")
-    print("  ✅ Balanced between consistency and creativity")
-    print("  ✅ Best for: General conversation, helpful suggestions")
-    print("  ℹ️  Default for most applications\n")
+    print("   Balanced between consistency and creativity")
+    print("   Best for: General conversation, helpful suggestions")
+    print("  ️  Default for most applications\n")
 
     print("Temperature 1.5-2.0:")
-    print("  ✅ Highly creative and varied")
-    print("  ✅ Best for: Creative writing, unique ideas, brainstorming")
-    print("  ❌ Not ideal for: Factual information, code\n")
+    print("   Highly creative and varied")
+    print("   Best for: Creative writing, unique ideas, brainstorming")
+    print("   Not ideal for: Factual information, code\n")
 
     print("=" * 80)
 

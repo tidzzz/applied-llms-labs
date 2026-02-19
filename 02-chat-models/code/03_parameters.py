@@ -2,7 +2,7 @@
 Model Parameters
 Run: python 02-chat-models/code/03_parameters.py
 
-🤖 Try asking GitHub Copilot Chat (https://github.com/features/copilot):
+ Try asking GitHub Copilot Chat (https://github.com/features/copilot):
 - "What temperature value should I use for a customer service chatbot?"
 - "How do I add the max_tokens parameter to limit response length?"
 """
@@ -18,7 +18,7 @@ load_dotenv()
 
 def temperature_comparison():
     model_name = os.environ.get("AI_MODEL", "gpt-5-mini")
-    print(f"🌡️  Temperature Comparison for {model_name}\n")
+    print(f"️  Temperature Comparison for {model_name}\n")
     print("=" * 80)
 
     prompt = "Write a creative opening line for a sci-fi story about time travel."
@@ -45,21 +45,21 @@ def temperature_comparison():
             # Some models may not support certain temperature values
             error_msg = str(error)
             if "temperature" in error_msg.lower():
-                print(f"  ⚠️  This model doesn't support temperature={temp}. Skipping...")
-                print(f"  💡 Error: {error_msg}")
+                print(f"  ️  This model doesn't support temperature={temp}. Skipping...")
+                print(f"   Error: {error_msg}")
             else:
                 # Re-raise unexpected errors
                 raise
 
-    print("\n💡 General Temperature Guidelines:")
+    print("\n General Temperature Guidelines:")
     print("   - Lower values (0-0.3): More deterministic, consistent responses")
     print("   - Medium values (0.7-1.0): Balanced creativity and consistency")
     print("   - Higher values (1.5-2.0): More creative and varied responses")
-    print("\n⚠️  Note: Model support varies - some models only support specific values")
+    print("\n️  Note: Model support varies - some models only support specific values")
 
 
 def max_tokens_example():
-    print("\n\n📏 Max Tokens Limit\n")
+    print("\n\n Max Tokens Limit\n")
     print("=" * 80)
 
     prompt = "Write a detailed explanation of machine learning in 5 paragraphs."
@@ -88,24 +88,26 @@ def max_tokens_example():
         except Exception as error:
             error_msg = str(error)
             if "max_tokens" in error_msg.lower():
-                print(f"  ⚠️  This model doesn't support max_tokens={max_tokens}. Skipping...")
-                print(f"  💡 Error: {error_msg}")
+                print(
+                    f"  ️  This model doesn't support max_tokens={max_tokens}. Skipping..."
+                )
+                print(f"   Error: {error_msg}")
             else:
                 raise
 
-    print("\n💡 Observations:")
+    print("\n Observations:")
     print("   - Lower max tokens = shorter responses")
     print("   - Response may be cut off if limit is too low")
     print("   - Use max tokens to control costs and response length")
 
 
 def main():
-    print("🎛️  Model Parameters Tutorial\n")
+    print("️  Model Parameters Tutorial\n")
 
     temperature_comparison()
     max_tokens_example()
 
-    print("\n\n✅ Summary:")
+    print("\n\n Summary:")
     print("   - Lower temperatures: Consistent, factual responses")
     print("   - Higher temperatures: Creative, varied responses")
     print("   - max_tokens: Control response length and costs")

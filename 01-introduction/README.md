@@ -74,10 +74,10 @@ GitHub Models provides free access to powerful AI models—you just need a Perso
 2. **Token name**: `llm-engineering-course` (or any name you prefer)
 3. **Expiration**: Choose your preference (90 days recommended)
 4. **Scopes/Permissions**:
-   - ✅ No scopes needed for GitHub Models!
+   -  No scopes needed for GitHub Models!
    - You can leave all checkboxes unchecked
 5. **Click**: "Generate token"
-6. **⚠️ IMPORTANT**: Copy your token now and save it to a text file temporarily! You'll need it in the next step.
+6. **️ IMPORTANT**: Copy your token now and save it to a text file temporarily! You'll need it in the next step.
 
 ### Step 4: Configure Environment Variables
 
@@ -128,22 +128,22 @@ python 01-introduction/scripts/test_setup.py
 **Expected output:**
 
 ```bash
-🚀 Testing AI provider connection...
+ Testing AI provider connection...
 
-✅ SUCCESS! Your AI provider is working!
+ SUCCESS! Your AI provider is working!
    Provider: https://models.inference.ai.azure.com
    Model: gpt-5-mini
 
 Model response: Setup successful!
 
-🎉 You're ready to start the course!
+ You're ready to start the course!
 ```
 
 If you see this, you're all set! If not, check the troubleshooting section below.
 
 ---
 
-### ✅ Setup Checklist
+###  Setup Checklist
 
 Before starting the course, make sure you have:
 
@@ -161,30 +161,30 @@ Before starting the course, make sure you have:
 
 By the end of this lab, you'll be able to:
 
-- ✅ Understand what LangChain is and why it exists
-- ✅ Recognize common AI application patterns
-- ✅ Set up a development environment
-- ✅ Make your first LLM call using GitHub Models
+-  Understand what LangChain is and why it exists
+-  Recognize common AI application patterns
+-  Set up a development environment
+-  Make your first LLM call using GitHub Models
 
 ---
 
-## 📖 Introduction: The Hardware Store Analogy
+##  Introduction: The Hardware Store Analogy
 
 **Imagine you're building a house.** You could manufacture your own bricks, create cement from scratch, and forge your own tools. Or, you could use a hardware store that provides quality materials and proven tools.
 
 **LangChain is the hardware store for AI development.**
 
 Just like a hardware store provides:
-- 🔨 **Ready-to-use tools** (hammers, saws, drills) → so you don't build tools from scratch
-- 🔌 **Universal adapters** (lets any plug work with any outlet) → so you can switch between brands
-- 📋 **Blueprints** (how-to guides for common projects) → so you follow proven designs
-- 🧱 **Interchangeable parts** (standard sizes that work together) → so you can mix and match
+-  **Ready-to-use tools** (hammers, saws, drills) → so you don't build tools from scratch
+-  **Universal adapters** (lets any plug work with any outlet) → so you can switch between brands
+-  **Blueprints** (how-to guides for common projects) → so you follow proven designs
+-  **Interchangeable parts** (standard sizes that work together) → so you can mix and match
 
 LangChain provides:
-- 🔨 **Ready-to-use components** (prompts, memory, tools) → so you don't build everything from scratch
-- 🔌 **Chat and LLM Abstractions** (one interface for OpenAI, Azure, Anthropic) → so you can switch LLMs easily
-- 📋 **Patterns** (agents, RAG, chatbots) → so you follow proven AI application designs
-- 🧱 **Composability** (components that work together seamlessly) → mix and match databases, vector stores and more in your projects
+-  **Ready-to-use components** (prompts, memory, tools) → so you don't build everything from scratch
+-  **Chat and LLM Abstractions** (one interface for OpenAI, Azure, Anthropic) → so you can switch LLMs easily
+-  **Patterns** (agents, RAG, chatbots) → so you follow proven AI application designs
+-  **Composability** (components that work together seamlessly) → mix and match databases, vector stores and more in your projects
 
 **The result?** You can focus on building your application, not reinventing the wheel.
 
@@ -194,7 +194,7 @@ LangChain provides:
 
 ---
 
-## 🧠 What is LangChain?
+##  What is LangChain?
 
 LangChain is a **framework for building AI-powered applications** using Large Language Models (LLMs).
 
@@ -219,7 +219,7 @@ With LangChain, you get:
 
 ---
 
-## 🏗️ Core Concepts Overview
+## ️ Core Concepts Overview
 
 LangChain is built around 5 core concepts you'll learn throughout this course:
 
@@ -248,7 +248,7 @@ flowchart LR
 
 ---
 
-## 💻 Hands-On: Your First LLM Call
+##  Hands-On: Your First LLM Call
 
 Let's make your first AI call using LangChain and GitHub Models!
 
@@ -282,7 +282,7 @@ model = ChatOpenAI(
 
 ```python
 response = model.invoke("What is LangChain in one sentence?")
-print("🤖 AI Response:", response.content)
+print(" AI Response:", response.content)
 ``` 
 
 **Code**: [`code/01_hello_world.py`](./code/01_hello_world.py)
@@ -298,7 +298,7 @@ import os
 load_dotenv()
 
 def main():
-    print("🦜🔗 Hello LangChain!\n")
+    print(" Hello LangChain!\n")
 
     # Create a chat model instance
     model = ChatOpenAI(
@@ -310,8 +310,8 @@ def main():
     # Make your first AI call!
     response = model.invoke("What is LangChain in one sentence?")
 
-    print("🤖 AI Response:", response.content)
-    print("\n✅ Success! You just made your first LangChain call!")
+    print(" AI Response:", response.content)
+    print("\n Success! You just made your first LangChain call!")
 
 if __name__ == "__main__":
     main()
@@ -322,11 +322,11 @@ if __name__ == "__main__":
 When you run this example with `python 01-introduction/code/01_hello_world.py`, you'll see:
 
 ```bash
-🦜🔗 Hello LangChain!
+ Hello LangChain!
 
-🤖 AI Response: LangChain is a framework for building applications powered by large language models (LLMs).
+ AI Response: LangChain is a framework for building applications powered by large language models (LLMs).
 
-✅ Success! You just made your first LangChain call!
+ Success! You just made your first LangChain call!
 ```
 
 ### How It Works
@@ -356,7 +356,7 @@ Storing these in `.env` means you can switch between providers (GitHub Models, A
 
 ---
 
-## 💬 Understanding Messages
+##  Understanding Messages
 
 LLMs work best with structured conversations. LangChain provides message types that separate system instructions (`SystemMessage`) from user input (`HumanMessage`), giving you precise control over the AI's personality and behavior.
 
@@ -378,7 +378,7 @@ import os
 load_dotenv()
 
 def main():
-    print("🎭 Understanding Message Types\n")
+    print(" Understanding Message Types\n")
 
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
@@ -394,9 +394,9 @@ def main():
 
     response = model.invoke(messages)
 
-    print("🤖 AI Response:\n")
+    print(" AI Response:\n")
     print(response.content)
-    print("\n✅ Notice how the SystemMessage influenced the response style!")
+    print("\n Notice how the SystemMessage influenced the response style!")
 
 if __name__ == "__main__":
     main()
@@ -407,13 +407,13 @@ if __name__ == "__main__":
 When you run this example with `python 01-introduction/code/02_message_types.py`, you'll see something similar to:
 
 ```bash
-🎭 Understanding Message Types
+ Understanding Message Types
 
-🤖 AI Response:
+ AI Response:
 
 Quantum computing is like having a super-fast magic box that can try many different solutions to a puzzle at the same time! While regular computers look at one answer at a time, quantum computers can explore lots of possibilities all at once, which helps them solve really hard problems much faster.
 
-✅ Notice how the SystemMessage influenced the response style!
+ Notice how the SystemMessage influenced the response style!
 ```
 
 ### How It Works
@@ -440,7 +440,7 @@ Quantum computing is like having a super-fast magic box that can try many differ
 
 ---
 
-## 🔄 Comparing Models
+##  Comparing Models
 
 GitHub Models gives you access to multiple AI models. Let's compare them!
 
@@ -466,13 +466,13 @@ import time
 load_dotenv()
 
 def compare_models():
-    print("🔬 Comparing AI Models\n")
+    print(" Comparing AI Models\n")
 
     prompt = "Explain recursion in programming in one sentence."
     models = ["gpt-5", "gpt-5-mini"]
 
     for model_name in models:
-        print(f"\n📊 Testing: {model_name}")
+        print(f"\n Testing: {model_name}")
         print("─" * 50)
 
         model = ChatOpenAI(
@@ -486,10 +486,10 @@ def compare_models():
         duration = (time.time() - start_time) * 1000
 
         print(f"Response: {response.content}")
-        print(f"⏱️  Time: {duration:.0f}ms")
+        print(f"️  Time: {duration:.0f}ms")
 
-    print("\n✅ Comparison complete!")
-    print("\n💡 Key Observations:")
+    print("\n Comparison complete!")
+    print("\n Key Observations:")
     print("   - gpt-5 is more capable and detailed")
     print("   - gpt-5-mini is faster and uses fewer resources")
     print("   - Choose based on your needs: speed vs. capability")
@@ -503,22 +503,22 @@ if __name__ == "__main__":
 When you run this example with `python 01-introduction/code/03_model_comparison.py`, you'll see:
 
 ```
-🔬 Comparing AI Models
+ Comparing AI Models
 
 
-📊 Testing: gpt-5
+ Testing: gpt-5
 ──────────────────────────────────────────────────
 Response: Recursion in programming is a technique where a function calls itself to solve smaller instances of the same problem until it reaches a base case.
-⏱️  Time: 2134ms
+️  Time: 2134ms
 
-📊 Testing: gpt-5-mini
+ Testing: gpt-5-mini
 ──────────────────────────────────────────────────
 Response: Recursion is when a function calls itself to solve a problem by breaking it down into smaller, similar sub-problems.
-⏱️  Time: 1845ms
+️  Time: 1845ms
 
-✅ Comparison complete!
+ Comparison complete!
 
-💡 Key Observations:
+ Key Observations:
    - gpt-5 is more capable and detailed
    - gpt-5-mini is faster and uses fewer resources
    - Choose based on your needs: speed vs. capability
@@ -543,7 +543,7 @@ Response: Recursion is when a function calls itself to solve a problem by breaki
 
 ---
 
-## 🗺️ Concept Map
+## ️ Concept Map
 
 This lab introduced you to the core concepts of LangChain:
 
@@ -562,7 +562,7 @@ graph LR
 
 ---
 
-## 🎮 Try More Yourself
+##  Try More Yourself
 
 **Quick Challenge**: Before moving to the next section, try modifying Example 1:
 
@@ -575,7 +575,7 @@ graph LR
 
 ---
 
-## 🌟 Real-World Applications
+##  Real-World Applications
 
 #### **Where you'll see these concepts in action:**
 
@@ -588,7 +588,7 @@ Now that you understand how these concepts apply to real applications, let's rev
 
 ---
 
-## 🎓 Key Takeaways
+##  Key Takeaways
 
 Let's review what you learned:
 
@@ -598,7 +598,7 @@ Let's review what you learned:
 
 ---
 
-## 🏆 Assignment
+##  Assignment
 
 The more you practice the better you'll get! Here are a few more challenges you can try to help you practice. Complete the challenges in [assignment.md](./assignment.md)!
 
@@ -608,7 +608,7 @@ The assignment includes:
 
 ---
 
-## 📚 Additional Resources
+##  Additional Resources
 
 - [LangChain Python Documentation](https://python.langchain.com/)
 - [GitHub Models Marketplace](https://github.com/marketplace/models)

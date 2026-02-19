@@ -13,7 +13,7 @@ load_dotenv()
 
 
 def main():
-    print("🎭 Understanding Message Types\n")
+    print(" Understanding Message Types\n")
 
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
@@ -31,9 +31,9 @@ def main():
 
     response = model.invoke(messages)
 
-    print("🤖 AI Response:\n")
+    print(" AI Response:\n")
     print(response.content)
-    print("\n✅ Notice how the SystemMessage influenced the response style!")
+    print("\n Notice how the SystemMessage influenced the response style!")
 
 
 if __name__ == "__main__":

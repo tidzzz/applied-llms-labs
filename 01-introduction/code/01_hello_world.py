@@ -12,7 +12,7 @@ load_dotenv()
 
 
 def main():
-    print("🦜🔗 Hello LangChain!\n")
+    print(" Hello LangChain!\n")
 
     # Create a chat model instance
     model = ChatOpenAI(
@@ -24,8 +24,8 @@ def main():
     # Make your first AI call!
     response = model.invoke("What is LangChain in one sentence?")
 
-    print("🤖 AI Response:", response.content)
-    print("\n✅ Success! You just made your first LangChain call!")
+    print(" AI Response:", response.content)
+    print("\n Success! You just made your first LangChain call!")
 
 
 if __name__ == "__main__":

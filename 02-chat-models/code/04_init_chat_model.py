@@ -10,7 +10,7 @@ ENDPOINT FORMAT:
 - Azure AI Foundry: https://your-resource.services.ai.azure.com/models
   (NOT the /openai/v1 endpoint - this script auto-converts if needed)
 
-🤖 Try asking GitHub Copilot Chat (https://github.com/features/copilot):
+ Try asking GitHub Copilot Chat (https://github.com/features/copilot):
 - "What are the advantages of init_chat_model over using ChatOpenAI directly?"
 - "How would I switch from Azure AI to Anthropic using init_chat_model?"
 """
@@ -47,10 +47,10 @@ def get_azure_ai_endpoint():
     # e.g., https://resource.openai.azure.com/openai/v1 -> https://resource.openai.azure.com/models
     if endpoint.endswith("/openai/v1"):
         endpoint = endpoint.replace("/openai/v1", "/models")
-        print(f"📝 Note: Converted endpoint from /openai/v1 to /models format")
+        print(f" Note: Converted endpoint from /openai/v1 to /models format")
     elif endpoint.endswith("/openai/v1/"):
         endpoint = endpoint.replace("/openai/v1/", "/models")
-        print(f"📝 Note: Converted endpoint from /openai/v1/ to /models format")
+        print(f" Note: Converted endpoint from /openai/v1/ to /models format")
 
     return endpoint
 
@@ -68,8 +68,8 @@ def azure_ai_example():
 
     model_name = os.getenv("AI_MODEL", "gpt-5-mini")
 
-    print(f"🔗 Using endpoint: {endpoint}")
-    print(f"🤖 Using model: {model_name}\n")
+    print(f" Using endpoint: {endpoint}")
+    print(f" Using model: {model_name}\n")
 
     # Initialize model using the azure_ai provider prefix
     # Format: "azure_ai:<model_name>"
@@ -79,7 +79,7 @@ def azure_ai_example():
         [HumanMessage(content="What is LangChain in one sentence?")]
     )
 
-    print("✅ Response:", response.content)
+    print(" Response:", response.content)
 
 
 def switching_providers_concept():
@@ -101,11 +101,11 @@ def switching_providers_concept():
     print("  # Google")
     print('  model = init_chat_model("google-genai:gemini-pro")')
     print()
-    print("💡 Same interface, different providers - just change the model string!")
+    print(" Same interface, different providers - just change the model string!")
 
 
 def main():
-    print("🔌 Provider-Agnostic Initialization with LangChain Azure AI\n")
+    print(" Provider-Agnostic Initialization with LangChain Azure AI\n")
     print("=" * 60)
 
     try:
@@ -113,7 +113,7 @@ def main():
         switching_providers_concept()
 
         print("\n" + "=" * 60)
-        print("\n📚 Key Takeaways:")
+        print("\n Key Takeaways:")
         print(
             "  - Use 'azure_ai:<model>' format for Azure AI Foundry and GitHub Models"
         )
@@ -123,15 +123,15 @@ def main():
         print("  - init_chat_model() provides a unified interface across providers")
         print()
     except ImportError as error:
-        print(f"⚠️  Missing dependency: {error}")
-        print("\n💡 Install LangChain Azure AI with:")
+        print(f"️  Missing dependency: {error}")
+        print("\n Install LangChain Azure AI with:")
         print("   pip install langchain-azure-ai")
     except Exception as error:
-        print(f"❌ Error: {error}")
-        print("\n💡 Make sure your .env file has:")
+        print(f" Error: {error}")
+        print("\n Make sure your .env file has:")
         print("   - AI_ENDPOINT set to your Azure AI or GitHub Models endpoint")
         print("   - AI_API_KEY set to your API key")
-        print("\n📝 Endpoint format:")
+        print("\n Endpoint format:")
         print("   - GitHub Models: https://models.inference.ai.azure.com")
         print("   - Azure AI Foundry: https://your-resource.openai.azure.com/models")
 

@@ -11,7 +11,7 @@ Now that you've learned the basics of LangChain, it's time to practice! These ch
 
 ---
 
-## Challenge: Experiment with System Prompts 🎭
+## Challenge: Experiment with System Prompts 
 
 **Goal**: Learn how system messages affect AI behavior.
 
@@ -58,7 +58,7 @@ load_dotenv()
 
 ---
 
-## Bonus Challenge: Model Performance Comparison 🔬
+## Bonus Challenge: Model Performance Comparison 
 
 **Goal**: Compare multiple models on the same task.
 
@@ -77,12 +77,12 @@ load_dotenv()
 
 **Expected Output**:
 ```
-📊 Model Performance Comparison
+ Model Performance Comparison
 ─────────────────────────────────────────────
 Model          | Time    | Length | Quality
 ─────────────────────────────────────────────
-gpt-5-mini    | 567ms   | 234ch  | ⭐⭐⭐⭐
-gpt-5         | 1234ms  | 456ch  | ⭐⭐⭐⭐⭐
+gpt-5-mini    | 567ms   | 234ch  | 
+gpt-5         | 1234ms  | 456ch  | 
 ```
 
 **Success Criteria**:

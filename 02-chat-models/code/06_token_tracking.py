@@ -2,7 +2,7 @@
 Token Usage Tracking Example
 Run: python 02-chat-models/code/06_token_tracking.py
 
-🤖 Try asking GitHub Copilot Chat (https://github.com/features/copilot):
+ Try asking GitHub Copilot Chat (https://github.com/features/copilot):
 - "How can I track token usage across multiple API calls in a conversation?"
 - "How would I calculate the cost based on token usage?"
 """
@@ -18,12 +18,12 @@ load_dotenv()
 
 def track_token_usage():
     model = ChatOpenAI(
-            model=os.getenv("AI_MODEL"),
-            base_url=os.getenv("AI_ENDPOINT"),
-            api_key=os.getenv("AI_API_KEY"),
-        )
+        model=os.getenv("AI_MODEL"),
+        base_url=os.getenv("AI_ENDPOINT"),
+        api_key=os.getenv("AI_API_KEY"),
+    )
 
-    print("📊 Token Usage Tracking Example\n")
+    print(" Token Usage Tracking Example\n")
 
     # Make a request
     response = model.invoke("Explain what Python is in 2 sentences.")
@@ -37,9 +37,9 @@ def track_token_usage():
         print(f"  Completion tokens: {usage.get('output_tokens', 'N/A')}")
         print(f"  Total tokens:      {usage.get('total_tokens', 'N/A')}")
     else:
-        print("⚠️  Token usage information not available in response metadata.")
+        print("️  Token usage information not available in response metadata.")
 
-    print("\n📝 Response:")
+    print("\n Response:")
     print(response.content)
 
 
