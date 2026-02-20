@@ -13,13 +13,13 @@ load_dotenv()
 
 
 def compare_models():
-    print("🔬 Comparing AI Models\n")
+    print(" Comparing AI Models\n")
 
     prompt = "Explain recursion in programming in one sentence."
     models = ["gpt-4o", "gpt-4o-mini"]
 
     for model_name in models:
-        print(f"\n📊 Testing: {model_name}")
+        print(f"\n Testing: {model_name}")
         print("─" * 50)
 
         model = ChatOpenAI(
@@ -33,10 +33,10 @@ def compare_models():
         duration = (time.time() - start_time) * 1000
 
         print(f"Response: {response.content}")
-        print(f"⏱️  Time: {duration:.0f}ms")
+        print(f"️  Time: {duration:.0f}ms")
 
-    print("\n✅ Comparison complete!")
-    print("\n💡 Key Observations:")
+    print("\n Comparison complete!")
+    print("\n Key Observations:")
     print("   - gpt-4o is more capable and detailed")
     print("   - gpt-4o-mini is faster and uses fewer resources")
     print("   - Choose based on your needs: speed vs. capability")

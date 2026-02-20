@@ -10,25 +10,25 @@ In this lab, you'll learn the art of having natural conversations with AI models
 
 By the end of this lab, you'll be able to:
 
-- ✅ Have multi-turn conversations with AI
-- ✅ Stream responses for better user experience
-- ✅ Handle errors gracefully
-- ✅ Control model behavior with parameters
-- ✅ Understand token usage
+-  Have multi-turn conversations with AI
+-  Stream responses for better user experience
+-  Handle errors gracefully
+-  Control model behavior with parameters
+-  Understand token usage
 
 ---
 
-## 📖 The Knowledgeable Friend Analogy
+##  The Knowledgeable Friend Analogy
 
 **Imagine you're having coffee with a knowledgeable friend.**
 
 When you talk to them:
 
-- 💬 **You have a back-and-forth conversation** (not just one question)
-- 🧠 **They remember what you said earlier** (conversation context)
-- 🗣️ **They speak as they think** (streaming responses)
-- 😊 **They adjust their tone** based on your preferences (model parameters)
-- ⚠️ **Sometimes they need clarification** (error handling)
+-  **You have a back-and-forth conversation** (not just one question)
+-  **They remember what you said earlier** (conversation context)
+- ️ **They speak as they think** (streaming responses)
+-  **They adjust their tone** based on your preferences (model parameters)
+- ️ **Sometimes they need clarification** (error handling)
 
 **Chat models work the same way!**
 
@@ -47,7 +47,7 @@ This lab teaches you how to have natural, interactive conversations with AI.
 
 ---
 
-## 💬 Multi-Turn Conversations
+##  Multi-Turn Conversations
 
 Previously, we sent single messages. But real conversations have multiple exchanges.
 
@@ -73,7 +73,7 @@ LangChain provides three core message types for building conversations:
 | **HumanMessage** | User input and questions | `HumanMessage(content="What is Python?")` |
 | **AIMessage** | AI responses with metadata | Returned by `model.invoke()` with `content`, `usage_metadata`, `id` |
 
-> **💡 Looking ahead:** In [Prompts, Messages, and Structured Outputs](../03-prompts-messages-outputs/README.md), you'll learn when to use messages vs templates and additional construction patterns for building agents.
+> ** Looking ahead:** In [Prompts, Messages, and Structured Outputs](../03-prompts-messages-outputs/README.md), you'll learn when to use messages vs templates and additional construction patterns for building agents.
 
 ---
 
@@ -92,12 +92,12 @@ messages = [
 
 **Why message classes?**
 
-- ✅ **Clear and explicit** - Easy to understand what each message represents
-- ✅ **Type hints** - Python type checkers help catch errors
-- ✅ **Better autocomplete** - Your editor helps you write code faster
-- ✅ **Consistent pattern** - Same approach used throughout the course
+-  **Clear and explicit** - Easy to understand what each message represents
+-  **Type hints** - Python type checkers help catch errors
+-  **Better autocomplete** - Your editor helps you write code faster
+-  **Consistent pattern** - Same approach used throughout the course
 
-> **💡 Other ways exist:** LangChain also supports dictionary format (`{"role": "system", "content": "..."}`) and string shortcuts for simple cases. You'll learn about these alternative syntaxes and when to use each approach in [Prompts, Messages, and Structured Outputs](../03-prompts-messages-outputs/README.md).
+> ** Other ways exist:** LangChain also supports dictionary format (`{"role": "system", "content": "..."}`) and string shortcuts for simple cases. You'll learn about these alternative syntaxes and when to use each approach in [Prompts, Messages, and Structured Outputs](../03-prompts-messages-outputs/README.md).
 
 ---
 
@@ -143,7 +143,7 @@ import os
 load_dotenv()
 
 def main():
-    print("💬 Multi-Turn Conversation Example\n")
+    print(" Multi-Turn Conversation Example\n")
 
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
@@ -157,31 +157,31 @@ def main():
         HumanMessage(content="What is Python?"),
     ]
 
-    print("👤 User: What is Python?")
+    print(" User: What is Python?")
 
     # First exchange
     response1 = model.invoke(messages)
-    print("\n🤖 AI:", response1.content)
+    print("\n AI:", response1.content)
     messages.append(AIMessage(content=response1.content))
 
     # Second exchange - AI remembers the context
-    print("\n👤 User: Can you show me a simple example?")
+    print("\n User: Can you show me a simple example?")
     messages.append(HumanMessage(content="Can you show me a simple example?"))
 
     response2 = model.invoke(messages)
     messages.append(AIMessage(content=response2.content))
-    print("\n🤖 AI:", response2.content)
+    print("\n AI:", response2.content)
 
     # Third exchange - AI still remembers everything
-    print("\n👤 User: What are the benefits compared to other languages?")
+    print("\n User: What are the benefits compared to other languages?")
     messages.append(HumanMessage(content="What are the benefits compared to other languages?"))
 
     # the 3rd AI response is not added to conversation history since it is the last in the conversation
     response3 = model.invoke(messages)
-    print("\n🤖 AI:", response3.content)
+    print("\n AI:", response3.content)
 
-    print("\n\n✅ Notice how the AI maintains context throughout the conversation!")
-    print(f"📊 Total messages in history: {len(messages)} messages, that include 1 system message, 3 Human messages and 2 AI responses")
+    print("\n\n Notice how the AI maintains context throughout the conversation!")
+    print(f" Total messages in history: {len(messages)} messages, that include 1 system message, 3 Human messages and 2 AI responses")
 
 if __name__ == "__main__":
     main()
@@ -192,22 +192,22 @@ if __name__ == "__main__":
 When you run this example with `python 02-chat-models/code/01_multi_turn.py`, you'll see a three-exchange conversation:
 
 ```bash
-💬 Multi-Turn Conversation Example
+ Multi-Turn Conversation Example
 
-👤 User: What is Python?
+ User: What is Python?
 
-🤖 AI: [Detailed explanation of Python]
+ AI: [Detailed explanation of Python]
 
-👤 User: Can you show me a simple example?
+ User: Can you show me a simple example?
 
-🤖 AI: [Python code example with explanation]
+ AI: [Python code example with explanation]
 
-👤 User: What are the benefits compared to other languages?
+ User: What are the benefits compared to other languages?
 
-🤖 AI: [Explanation of Python benefits]
+ AI: [Explanation of Python benefits]
 
-✅ Notice how the AI maintains context throughout the conversation!
-📊 Total messages in history: 6 messages, that include 1 system message, 3 Human messages and 2 AI responses
+ Notice how the AI maintains context throughout the conversation!
+ Total messages in history: 6 messages, that include 1 system message, 3 Human messages and 2 AI responses
 ```
 
 Notice how each response references the previous context - the AI "remembers" because we send the full message history with each call!
@@ -225,7 +225,7 @@ Notice how each response references the previous context - the AI "remembers" be
 
 ---
 
-## ⚡ Streaming Responses
+##  Streaming Responses
 
 When you ask a complex question, waiting for the entire response can feel slow. Streaming sends the response word-by-word as it's generated.
 
@@ -269,7 +269,7 @@ load_dotenv()
 #function is called streaming_example in 02_streaming.py 
 def main():
 
-    print("🤖 AI (streaming):")
+    print(" AI (streaming):")
 
     model = ChatOpenAI(
         model=os.getenv("AI_MODEL"),
@@ -282,7 +282,7 @@ def main():
         # Write each chunk as it arrives (no newline)
         print(chunk.content, end="", flush=True) 
 
-    print("\n\n✅ Stream complete!")
+    print("\n\n Stream complete!")
 
 if __name__ == "__main__":
     main()
@@ -294,12 +294,12 @@ if __name__ == "__main__":
 If you were to run just the `streaming_example` function in `python 02-chat-models/code/02_streaming.py`, you'll see the response appear word-by-word and look something like this:
 
 ```bash
-🤖 AI (streaming):
+ AI (streaming):
 The internet is a global network of networks: countless computers, phones, servers, and other devices are connected by physical links (fiber-optic and copper cables, cell towers and satellites) and by local networks run by Internet Service Providers (ISPs). Data sent between devices is broken into small labeled units called packets, each carrying source and destination addresses (IP addresses). Routers and switches along the path read those addresses and forward packets toward their destination across the fastest available routes, hopping between smaller networks and large backbone lines until the packets arrive and are reassembled.
 
 On top of this physical and routing layer are standard communication rules, or protocols, that make sense of the packets: TCP/IP governs reliable delivery and addressing, DNS translates human domain names into IP addresses, and application protocols like HTTP/HTTPS define how web pages are requested and delivered. When you type a web address, your device asks a DNS server for the site’s IP, opens a TCP connection to that server, and uses HTTP/HTTPS to request content, which the server sends back in packets; systems like caching, content delivery networks, and encryption (TLS) help make that process faster and more secure.
 
-✅ Stream complete!
+ Stream complete!
 ```
 
 You'll notice the text appears progressively, word by word, rather than all at once!
@@ -323,16 +323,16 @@ You'll notice the text appears progressively, word by word, rather than all at o
 
 **When to Use**:
 
-- ✅ Long responses (articles, explanations, code)
-- ✅ User-facing chatbots and interactive applications
-- ✅ When you want to display progress to users
-- ❌ When you need the full response first (parsing, validation, post-processing)
+-  Long responses (articles, explanations, code)
+-  User-facing chatbots and interactive applications
+-  When you want to display progress to users
+-  When you need the full response first (parsing, validation, post-processing)
 
-> **💡 Bonus**: To track token usage with streaming, some providers support including usage metadata in the final chunk. This is provider-dependent - check your provider's documentation for availability.
+> ** Bonus**: To track token usage with streaming, some providers support including usage metadata in the final chunk. This is provider-dependent - check your provider's documentation for availability.
 
 ---
 
-## 🎛️ Model Parameters
+## ️ Model Parameters
 
 You can control how the LLM responds by adjusting parameters. These can vary by provider/model so always check the documentation.
 
@@ -349,7 +349,7 @@ Temperature controls randomness and creativity:
 - **2.0 = Creative**: Some models support up to 2.0 for more random and creative responses but is generally less predictable
   - Use for: Creative writing, brainstorming
 
-> **⚠️ Provider and Model Differences**:
+> **️ Provider and Model Differences**:
 >
 > - **GitHub Models (OpenAI)**: Supports 0.0 to 2.0 for most models
 
@@ -430,7 +430,7 @@ def temperature_comparison():
     temperatures = [0, 1, 2]
 
     for temp in temperatures:
-        print(f"\n🌡️ Temperature: {temp}")
+        print(f"\n️ Temperature: {temp}")
         print("-" * 80)
 
         model = ChatOpenAI(
@@ -446,10 +446,10 @@ def temperature_comparison():
                 print(f"  Try {i}: {response.content}")
         except Exception as e:
             # Some models may not support certain temperature values
-            print(f"  ⚠️  This model doesn't support temperature={temp}. Skipping...")
-            print(f"  💡 Error: {e}")
+            print(f"  ️  This model doesn't support temperature={temp}. Skipping...")
+            print(f"   Error: {e}")
 
-    print("\n💡 General Temperature Guidelines:")
+    print("\n General Temperature Guidelines:")
     print("   - Lower values (0-0.3): More deterministic, consistent responses")
     print("   - Medium values (0.7-1.0): Balanced creativity and consistency")
     print("   - Higher values (1.5-2.0): More creative and varied responses")
@@ -465,22 +465,22 @@ When you run this example with `python 02-chat-models/code/03_parameters.py`, th
 **With a model that supports all temperature values:**
 
 ```bash
-🌡️ Temperature: 0
+️ Temperature: 0
 ────────────────────────────────────────────────────────────
   Try 1: "In the year 2157, humanity had finally broken free from the confines of Earth."
   Try 2: "In the year 2157, humanity had finally broken free from the confines of Earth."
 
-🌡️ Temperature: 1
+️ Temperature: 1
 ────────────────────────────────────────────────────────────
   Try 1: "The stars whispered secrets through the observation deck's reinforced glass, but Captain Reeves had stopped listening years ago."
   Try 2: "Time folded like origami in Dr. Chen's laboratory..."
 
-🌡️ Temperature: 2
+️ Temperature: 2
 ────────────────────────────────────────────────────────────
   Try 1: "Zyx-9 flickered into existence at precisely the wrong moment—right between the temporal rift and Dr. Kwan's morning coffee."
   Try 2: "The chronometer screamed in colors that hadn't been invented yet..."
 
-💡 General Temperature Guidelines:
+ General Temperature Guidelines:
    - Lower values (0-0.3): More deterministic, consistent responses
    - Medium values (0.7-1.0): Balanced creativity and consistency
    - Higher values (1.5-2.0): More creative and varied responses
@@ -489,23 +489,23 @@ When you run this example with `python 02-chat-models/code/03_parameters.py`, th
 **With a model that only supports default temperature (like gpt-4-mini):**
 
 ```bash
-🌡️ Temperature: 0
+️ Temperature: 0
 ────────────────────────────────────────────────────────────
-  ⚠️  This model doesn't support temperature=0. Skipping...
+  ️  This model doesn't support temperature=0. Skipping...
   �� Error: 400 Unsupported value: 'temperature' does not support 0 with this model.
 
-🌡️ Temperature: 1
+️ Temperature: 1
 ────────────────────────────────────────────────────────────
   Try 1: On the morning the calendar unstitched itself, I reached into yesterday and came out with a photograph of tomorrow.
   Try 2: The first time I traveled back, I found my future self waiting with tired eyes and a list of instructions on how not to become him.
 
-🌡️ Temperature: 2
+️ Temperature: 2
 ────────────────────────────────────────────────────────────
-  ⚠️  This model doesn't support temperature=2. Skipping...
-  💡 Error: 400 Unsupported value: 'temperature' does not support 2 with this model.
+  ️  This model doesn't support temperature=2. Skipping...
+   Error: 400 Unsupported value: 'temperature' does not support 2 with this model.
 ```
 
-> **⚠️ Model-Specific Behavior**: The error handling allows the script to run successfully regardless of which temperature values your model supports. This demonstrates how real-world AI applications need to handle parameter constraints gracefully.
+> **️ Model-Specific Behavior**: The error handling allows the script to run successfully regardless of which temperature values your model supports. This demonstrates how real-world AI applications need to handle parameter constraints gracefully.
 
 ### How It Works
 
@@ -526,15 +526,15 @@ When you run this example with `python 02-chat-models/code/03_parameters.py`, th
 
 ---
 
-## 🔌 Provider-Agnostic Initialization
+##  Provider-Agnostic Initialization
 
 LangChain provides `init_chat_model()` for provider-agnostic initialization. Think of it like universal power adapters - instead of different chargers for each device (OpenAI, Anthropic, Google), you have one adapter that works with all of them.
 
 ### Why Use init_chat_model()?
 
-- 🔄 **Easy Provider Switching**: Change providers by updating a single string
-- 🏗️ **Framework Building**: Create libraries that support many providers
-- 🎯 **Unified Interface**: Same code pattern works across all providers
+-  **Easy Provider Switching**: Change providers by updating a single string
+- ️ **Framework Building**: Create libraries that support many providers
+-  **Unified Interface**: Same code pattern works across all providers
 
 ### Setting Up LangChain Azure AI
 
@@ -552,7 +552,7 @@ The `\models` endpoint is required when using LangChain Azure AI.
 |----------|-----------------|---------|
 | GitHub Models | Works as-is | `https://models.inference.ai.azure.com` |
 
-> **⚠️ Note**: LangChain Azure AI expects the `/models` endpoint format, not `/openai/v1`. The example code automatically converts `/openai/v1` endpoints to `/models` format if needed. For GitHub Models users, no conversion is needed since the endpoint is already in the correct format.
+> **️ Note**: LangChain Azure AI expects the `/models` endpoint format, not `/openai/v1`. The example code automatically converts `/openai/v1` endpoints to `/models` format if needed. For GitHub Models users, no conversion is needed since the endpoint is already in the correct format.
 
 ### Example 4: Provider-Agnostic Initialization
 
@@ -587,7 +587,7 @@ import os
 load_dotenv()
 
 def main():
-    print("🔌 Provider-Agnostic Initialization with Azure AI\n")
+    print(" Provider-Agnostic Initialization with Azure AI\n")
 
     # Set environment variables required by LangChain Azure AI
     os.environ["AZURE_AI_ENDPOINT"] = os.getenv("AI_ENDPOINT", "")
@@ -602,7 +602,7 @@ def main():
         HumanMessage(content="What is LangChain in one sentence?")
     ])
 
-    print("✅ Response:", response.content)
+    print(" Response:", response.content)
 
 if __name__ == "__main__":
     main()
@@ -613,17 +613,17 @@ if __name__ == "__main__":
 When you run this example with `python 02-chat-models/code/04_init_chat_model.py`, you'll see:
 
 ```bash
-🔌 Provider-Agnostic Initialization with LangChain Azure AI
+ Provider-Agnostic Initialization with LangChain Azure AI
 
 ============================================================
 
 === init_chat_model() with Azure AI ===
 
-📝 Note: Converted endpoint from /openai/v1 to /models format
-🔗 Using endpoint: https://your-resource.openai.azure.com/models
-🤖 Using model: gpt-5-mini
+ Note: Converted endpoint from /openai/v1 to /models format
+ Using endpoint: https://your-resource.openai.azure.com/models
+ Using model: gpt-5-mini
 
-✅ Response: LangChain is a framework for developing applications powered by 
+ Response: LangChain is a framework for developing applications powered by 
 language models, providing tools and abstractions for building chains, agents, 
 and retrieval systems.
 
@@ -643,7 +643,7 @@ init_chat_model() makes switching between providers simple:
   # Google
   model = init_chat_model("google-genai:gemini-pro")
 
-💡 Same interface, different providers - just change the model string!
+ Same interface, different providers - just change the model string!
 ```
 
 ### How It Works
@@ -669,7 +669,7 @@ GitHub models provides built-in access to the OpenAI, Anthropic, DeepSeek, Qwen,
 
 ---
 
-## 🛡️ Error Handling with Built-In Retries
+## ️ Error Handling with Built-In Retries
 
 API calls can fail due to rate limits, network issues, or temporary service problems. LangChain provides built-in retry logic with exponential backoff.
 
@@ -724,17 +724,17 @@ def main():
     try:
         print("Making API call with automatic retry...\n")
         response = model_with_retry.invoke("What is LangChain?")
-        print("✅ Success!")
+        print(" Success!")
         print(response.content)
     except Exception as error:
-        print(f"❌ Error: {error}")
+        print(f" Error: {error}")
 
         # Handle specific error types
         error_msg = str(error)
         if "429" in error_msg:
-            print("\n💡 Rate limit hit. Try again in a few moments.")
+            print("\n Rate limit hit. Try again in a few moments.")
         elif "401" in error_msg:
-            print("\n💡 Check your API key in .env file")
+            print("\n Check your API key in .env file")
 
 if __name__ == "__main__":
     main()
@@ -744,10 +744,10 @@ if __name__ == "__main__":
 
 **Built-in Retry Benefits**:
 
-- ✅ **Automatic exponential backoff**: Waits longer between each retry (1s, 2s, 4s...)
-- ✅ **Works with all LangChain components**: Compatible with agents, RAG, and chains
-- ✅ **Handles 429 errors gracefully**: Automatically retries rate limit errors
-- ✅ **Less code**: No manual retry loop needed
+-  **Automatic exponential backoff**: Waits longer between each retry (1s, 2s, 4s...)
+-  **Works with all LangChain components**: Compatible with agents, RAG, and chains
+-  **Handles 429 errors gracefully**: Automatically retries rate limit errors
+-  **Less code**: No manual retry loop needed
 
 **What's happening**:
 
@@ -763,11 +763,11 @@ if __name__ == "__main__":
 - Works seamlessly when you advance to agents and RAG in later labs
 - Standardized across LangChain ecosystem
 
-> **⚠️ Known Limitation**: `with_retry()` currently has issues with streaming (`.stream()`). Retry logic works correctly with `.invoke()` but may not execute with `.stream()`. For critical operations requiring retry logic, use `.invoke()` instead of `.stream()`.
+> **️ Known Limitation**: `with_retry()` currently has issues with streaming (`.stream()`). Retry logic works correctly with `.invoke()` but may not execute with `.stream()`. For critical operations requiring retry logic, use `.invoke()` instead of `.stream()`.
 
 ---
 
-## 📊 Token Tracking and Costs
+##  Token Tracking and Costs
 
 Tokens power AI models, and they directly impact cost and performance. Let's track them!
 
@@ -808,7 +808,7 @@ def track_token_usage():
         api_key=os.getenv("AI_API_KEY")
     )
 
-    print("📊 Token Usage Tracking Example\n")
+    print(" Token Usage Tracking Example\n")
 
     # Make a request
     response = model.invoke("Explain what Python is in 2 sentences.")
@@ -822,9 +822,9 @@ def track_token_usage():
         print(f"  Completion tokens: {usage.get('output_tokens', 'N/A')}")
         print(f"  Total tokens:      {usage.get('total_tokens', 'N/A')}")
     else:
-        print("⚠️  Token usage information not available in response metadata.")
+        print("️  Token usage information not available in response metadata.")
 
-    print("\n📝 Response:")
+    print("\n Response:")
     print(response.content)
 
 if __name__ == "__main__":
@@ -836,14 +836,14 @@ if __name__ == "__main__":
 When you run this example with `python 02-chat-models/code/06_token_tracking.py`, you'll see:
 
 ```
-📊 Token Usage Tracking Example
+ Token Usage Tracking Example
 
 Token Breakdown:
   Prompt tokens:     16
   Completion tokens: 216
   Total tokens:      232
 
-📝 Response:
+ Response:
 Python is a high-level, interpreted programming language known for its clean syntax and 
 readability, making it ideal for beginners and experienced developers alike. It supports 
 multiple programming paradigms and has a vast ecosystem of libraries for web development, 
@@ -867,10 +867,10 @@ data science, machine learning, and automation.
 
 **Why track tokens?**
 
-- 💰 **Cost monitoring**: Understand your API spending
-- ⚡ **Performance**: More tokens = slower responses
-- 📊 **Optimization**: Identify expensive queries
-- 🎯 **Budgeting**: Predict costs for production
+-  **Cost monitoring**: Understand your API spending
+-  **Performance**: More tokens = slower responses
+-  **Optimization**: Identify expensive queries
+-  **Budgeting**: Predict costs for production
 
 ### Cost Optimization Strategies
 
@@ -899,7 +899,7 @@ response = model.invoke(recent_messages)
 
 ---
 
-## 🗺️ Concept Map
+## ️ Concept Map
 
 This lab covered the essential building blocks for creating interactive AI conversations:
 
@@ -917,7 +917,7 @@ graph LR
 
 ---
 
-## 🎓 Key Takeaways
+##  Key Takeaways
 
 - **Multi-turn conversations**: Send entire message history with each call
 - **Streaming**: Display responses as they generate for better UX
@@ -931,7 +931,7 @@ graph LR
 
 ---
 
-## 🏆 Assignment
+##  Assignment
 
 Ready to practice? Complete the challenges in [assignment.md](./assignment.md)!
 
@@ -942,10 +942,10 @@ The assignment includes:
 
 ---
 
-## 📚 Additional Resources
+##  Additional Resources
 
 - [LangChain Chat Models Documentation](https://python.langchain.com/docs/integrations/chat/)
 - [Streaming Guide](https://python.langchain.com/docs/how_to/streaming/)
 - [Model Parameters](https://platform.openai.com/docs/api-reference/chat/create)
 
-💡 **Want more examples?** Check out the [samples/](./samples) folder for additional code examples including streaming responses, error handling, and token tracking!
+ **Want more examples?** Check out the [samples/](./samples) folder for additional code examples including streaming responses, error handling, and token tracking!

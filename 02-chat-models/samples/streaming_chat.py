@@ -22,25 +22,25 @@ def streaming_chat():
         try:
             user_input = input("\nYou: ").strip()
         except (EOFError, KeyboardInterrupt):
-            print("\n\n👋 Goodbye!")
+            print("\n\n Goodbye!")
             break
 
         if user_input.lower() in ("quit", "exit"):
-            print("\n👋 Goodbye!")
+            print("\n Goodbye!")
             break
 
         if not user_input:
             continue
 
         try:
-            print("\n🤖 Typing...\n")
+            print("\n Typing...\n")
 
             start_time = time.time()
             first_chunk_time = 0
             full_response = ""
 
             # Clear the "Typing..." line and print bot prefix
-            sys.stdout.write("\r🤖 Chatbot: ")
+            sys.stdout.write("\r Chatbot: ")
             sys.stdout.flush()
 
             stream = model.stream(user_input)
@@ -56,19 +56,19 @@ def streaming_chat():
             end_time = time.time()
 
             print("\n")
-            print(f"⚡ First chunk: {(first_chunk_time - start_time) * 1000:.0f}ms")
-            print(f"⏱️  Full response: {(end_time - start_time) * 1000:.0f}ms")
+            print(f" First chunk: {(first_chunk_time - start_time) * 1000:.0f}ms")
+            print(f"️  Full response: {(end_time - start_time) * 1000:.0f}ms")
 
             # Exit in CI mode after one interaction
             if os.environ.get("CI") == "true":
                 break
 
         except Exception as error:
-            print(f"\n❌ Error: {error}")
+            print(f"\n Error: {error}")
 
 
 def main():
-    print("⚡ Streaming Chat Interface")
+    print(" Streaming Chat Interface")
     print('Type your question and watch the response stream! (Type "quit" to exit)\n')
 
     streaming_chat()

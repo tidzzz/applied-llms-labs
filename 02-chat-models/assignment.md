@@ -12,7 +12,7 @@ Practice multi-turn conversations, streaming, parameters, and error handling to 
 
 ---
 
-## Challenge: Interactive Chatbot 🤖
+## Challenge: Interactive Chatbot 
 
 **Goal**: Build a chatbot that maintains conversation history across multiple exchanges.
 
@@ -27,16 +27,16 @@ Practice multi-turn conversations, streaming, parameters, and error handling to 
 
 **Example Interaction**:
 ```
-🤖 Chatbot: Hello! I'm your helpful assistant. Ask me anything!
+ Chatbot: Hello! I'm your helpful assistant. Ask me anything!
 
 You: What is Python?
-🤖: Python is a versatile programming language...
+: Python is a versatile programming language...
 
 You: Can you show me an example?
-🤖: Sure! Here's a simple Python example...
+: Sure! Here's a simple Python example...
 
 You: quit
-👋 Goodbye! We had 5 messages in our conversation.
+ Goodbye! We had 5 messages in our conversation.
 ```
 
 **Success Criteria**:
@@ -77,7 +77,7 @@ messages = [
 
 ---
 
-## Bonus Challenge: Temperature Experiment 🌡️
+## Bonus Challenge: Temperature Experiment ️
 
 **Goal**: Understand how temperature affects AI creativity and consistency.
 
@@ -95,19 +95,19 @@ messages = [
 
 **Expected Output**:
 ```
-🌡️ Temperature: 0
+️ Temperature: 0
 ─────────────────────────────────────
 Try 1: "Brew Your Best Day"
 Try 2: "Brew Your Best Day"
 Try 3: "Brew Your Best Day"
 
-🌡️ Temperature: 2
+️ Temperature: 2
 ─────────────────────────────────────
 Try 1: "Caffeinated Dreams Await"
 Try 2: "Sip the Extraordinary"
 Try 3: "Where Magic Meets Mocha"
 
-📊 Analysis:
+ Analysis:
 - Temperature 0: Perfect for factual, consistent responses
 - Temperature 2: Great for creative brainstorming
 ```
